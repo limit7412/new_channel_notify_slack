@@ -1,4 +1,4 @@
-service: new_channel_notify_for_slack
+service: new_channel_notify_slack
 
 custom:
   defaultStage: dev
