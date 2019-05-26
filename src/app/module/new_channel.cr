@@ -1,7 +1,7 @@
 require "json"
 
 class NewChannel
-  def initialize(@event : JSON::Any)
+  def initialize(@body : JSON::Any)
     # TODO: 仮
     @name = "name"
     @user = "user"
