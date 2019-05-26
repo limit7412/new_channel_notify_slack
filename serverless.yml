@@ -1,4 +1,4 @@
-service: new_channel_notify_slack
+service: new-channel-notify-slack
 
 custom:
   defaultStage: dev
@@ -16,7 +16,7 @@ provider:
     ${file(./env.yml)}
 
 functions:
-  hello:
+  notify_slack:
     handler: notify_slack
     events:
       - http:

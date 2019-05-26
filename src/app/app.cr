@@ -3,11 +3,11 @@ require "uri"
 require "./module/*"
 
 class App
-  def initialize(@event)
+  def initialize(@event : JSON::Any)
   end
 
   def run
-    channel = Channel.new @event
+    channel = NewChannel.new @event
     slack = Slack.new "#{ENV["WEBHOOK_URL"]}"
 
     return slack.post(

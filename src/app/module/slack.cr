@@ -7,7 +7,7 @@ class Slack
     @slack = WebHook.new  url
   end
 
-  def post(message : String, title, : String, footer : String)
+  def post(message : String, title : String, footer : String)
     post = {
       fallback: message,
       pretext: title,
@@ -19,6 +19,10 @@ class Slack
       attachments: [post]
     }
 
-    return @slack.post body
+    @slack.post body
+
+    return  {
+      result: "ok"
+    }
   end
 end
