@@ -2,16 +2,13 @@ require "json"
 
 class NewChannel
   def initialize(@body : JSON::Any)
-    # TODO: 仮
-    @name = "name"
-    @user = "user"
   end
 
-  def name()
-    @name
+  def id()
+    @body["channel"]["id"]
   end
 
-  def user()
-    @user
+  def creator()
+    @body["channel"]["creator"]
   end
 end

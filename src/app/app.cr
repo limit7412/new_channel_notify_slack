@@ -7,16 +7,17 @@ class App
   end
 
   def run
-    channel = NewChannel.new @event["body"]
-    slack = Slack.new "#{ENV["WEBHOOK_URL"]}"
+    if @event["body"]["type"] == "url_verification"
+      @event["body"]["challenge"]
+    else
+      channel = NewChannel.new @event["body"]
+      slack = Slack.new "#{ENV["WEBHOOK_URL"]}"
 
-    slack.post(
-      message: "新規チャンネル通知",
-      title: "created new channel #{channel.name}",
-      footer: "by #{channel.user}",
-      text: @event["body"].to_json
-    )
+      slack.post "<##{channel.id}> has created by <@#{channel.creator}>"
 
-    return @event["body"]["challenge"]
+      return {
+        result: "ok"
+      }
+    end
   end
 end
