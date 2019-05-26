@@ -7,13 +7,13 @@ class Slack
     @slack = WebHook.new  url
   end
 
-  def post(message : String, title, : String, user : String)
+  def post(message : String, title, : String, footer : String)
     post = {
       fallback: message,
       pretext: title,
       title: title,
       color: "#4286f4",
-      footer: user,
+      footer: footer,
     }
     body = {
       attachments: [post]

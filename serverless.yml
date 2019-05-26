@@ -17,9 +17,9 @@ provider:
 
 functions:
   hello:
-    handler: hello
+    handler: notify_slack
     events:
       - http:
-          path: test
+          path: notify_slack
           method: post
           integration: lambda

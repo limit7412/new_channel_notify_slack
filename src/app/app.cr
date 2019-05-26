@@ -12,6 +12,8 @@ class App
 
     return slack.post(
       message: "新規チャンネル通知",
+      title: "created new channel #{channel.name}",
+      footer: "by #{channel.user}",
     )
   end
 end
