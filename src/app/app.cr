@@ -10,13 +10,13 @@ class App
     if @event["body"]["type"] == "url_verification"
       @event["body"]["challenge"]
     else
-      channel = NewChannel.new @event["body"]
+      channel = NewChannel.new @event["body"]["event"]
       slack = Slack.new "#{ENV["WEBHOOK_URL"]}"
 
       slack.post "<##{channel.id}> has created by <@#{channel.creator}>"
 
       return {
-        result: "ok"
+        ok: true
       }
     end
   end

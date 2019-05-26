@@ -9,7 +9,8 @@ class Slack
 
   def post(text : String)
     post = {
-      text: text
+      text: text,
+      color: "#4286f4",
     }
     body = {
       attachments: [post]
